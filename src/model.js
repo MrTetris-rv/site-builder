@@ -4,6 +4,7 @@ import {
   TitleBlock,
   ColumnsBlock,
   ImageBlock,
+  VideoBlock,
 } from './classes/blocks';
 export const model = [
   new TitleBlock('Site builder using js', {
@@ -43,4 +44,11 @@ export const model = [
       'text-align': 'center',
     },
   }),
+  new VideoBlock('https://www.youtube.com/embed/BLyz7_Ou5bY', {
+    styles: {
+      padding: '2rem 0',
+      display: 'flex',
+      'justify-content': 'center',
+    },
+  })
 ];

@@ -20,6 +20,9 @@ export function block(type) {
     case 'image':
       placeholder = 'img url';
       break;
+    case 'video':
+      placeholder = 'video url';
+      break;
     case 'columns':
       placeholder = '1-st col;2-st col;';
       break;

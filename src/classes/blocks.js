@@ -31,12 +31,12 @@ export class ImageBlock extends Block {
   }
   toHTML() {
     const {
-      imageStyles: is,
+      imageStyles,
       alt,
       styles
     } = this.options;
     return row(
-      `<img src='${this.value}' alt="${alt}" style="${css(is)}"/>`,
+      `<img src='${this.value}' alt="${alt}" style="${css(imageStyles)}"/>`,
       css(styles)
     );
   }
@@ -60,5 +60,22 @@ export class TextBlock extends Block {
   }
   toHTML() {
     return row(col(`<p>${this.value}</p>`), css(this.options.styles));
+  }
+}
+
+export class VideoBlock extends Block {
+  constructor(value, options) {
+    super(value, options);
+  }
+  toHTML() {
+    const {
+      styles,
+      videoStyles
+    } = this.options;
+    return row(`<iframe src="${this.value}" style=" width: 800px;
+    height: 400px; ${css(videoStyles)}" 
+    title="YouTube video player" frameborder="0" allow="accelerometer;
+    autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>`, css(styles));
   }
 }

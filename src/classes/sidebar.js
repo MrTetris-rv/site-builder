@@ -5,7 +5,8 @@ import {
   ColumnsBlock,
   ImageBlock,
   TextBlock,
-  TitleBlock
+  TitleBlock,
+  VideoBlock
 } from './blocks';
 export class Sidebar {
   constructor(selector, updateCallback) {
@@ -15,7 +16,7 @@ export class Sidebar {
   }
   init() {
     this.$el.insertAdjacentHTML('afterbegin', this.template);
-    this.$el.addEventListener('submit', this.add.bind(this));
+    this.$el.addEventListener('submit', (event) => this.add(event));
   }
   get template() {
     return [
@@ -23,6 +24,7 @@ export class Sidebar {
       block('title'),
       block('image'),
       block('columns'),
+      block('video')
     ].join('');
   }
   add(event) {
@@ -50,6 +52,11 @@ export class Sidebar {
         break;
       case 'columns':
         this.update(new ColumnsBlock(value, {
+          styles
+        }));
+        break;
+      case 'video':
+        this.update(new VideoBlock(value, {
           styles
         }));
         break;
